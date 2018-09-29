@@ -31,7 +31,7 @@ static void thread_entry(void* parameter)
     }
 }
 
-int thread_static_simple_init()
+int thread_static_sample_init()
 {
     rt_err_t result;
 
@@ -77,22 +77,22 @@ static void _tc_cleanup()
     tc_done(TC_STAT_PASSED);
 }
 
-int _tc_thread_static_simple()
+int _tc_thread_static_sample()
 {
     /* 设置TestCase清理回调函数 */
     tc_cleanup(_tc_cleanup);
-    thread_static_simple_init();
+    thread_static_sample_init();
 
     /* 返回TestCase运行的最长时间 */
     return 100;
 }
 /* 输出函数命令到finsh shell中 */
-FINSH_FUNCTION_EXPORT(_tc_thread_static_simple, a static thread example);
+FINSH_FUNCTION_EXPORT(_tc_thread_static_sample, a static thread example);
 #else
 /* 用户应用入口 */
 int rt_application_init()
 {
-    thread_static_simple_init();
+    thread_static_sample_init();
 
     return 0;
 }
